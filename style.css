@@ -1,0 +1,36 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { 
+    background-color: lightblue; 
+}
+
+body {
+    min-height: 100vh;
+    max-width: 960px;
+    background-color: papayawhip; 
+    margin: 0 auto;
+}
+
+#grid-container {
+    display: flex;
+    border: 1px solid brown;
+}
+
+.column {
+    flex: 1;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: gold;
+    text-align: center;
+    border: 1px solid brown;
+}
+
+.hover-effect {
+    background-color: green
+}
