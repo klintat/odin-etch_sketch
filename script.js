@@ -3,7 +3,7 @@ let rows = 16;
 
 const gridContainer = document.querySelector("#grid-container");
 
-// Making grid with hover effect
+// Function for making grid layout
 const makeGrid = () => {
     for (let i = 0; i < columns; ++i) {
         let column = document.createElement("div");
@@ -19,6 +19,7 @@ const makeGrid = () => {
 
 makeGrid();
 
+// Function for the hover effect
 const hoverEffect = () => {
     /*document.getElementsByClassName("row").addEventListener("mouseover", function(){
         this.classList.add("hover-effect");
@@ -30,3 +31,10 @@ const hoverEffect = () => {
 
 hoverEffect();
 
+// Function for reset and new layout grid
+const btnReset = document.querySelector("#btn-reset");
+
+btnReset.addEventListener("click", function() {
+    const userInput = prompt("Make new grid! How big? (max limit: 100)");
+    console.log(userInput);
+})
