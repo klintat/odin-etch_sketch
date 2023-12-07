@@ -1,3 +1,8 @@
+:root {
+    --baseColor: #98D3DF;
+    --bodyColor: papayawhip; 
+}
+
 * { 
     margin: 0;
     padding: 0;
@@ -5,7 +10,7 @@
 }
 
 html { 
-    background-color: lightblue; 
+    background-color: var(--baseColor); 
 }
 
 body {
@@ -33,4 +38,16 @@ body {
 
 .hover-effect {
     background-color: green
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+img {
+    height: auto;
+    max-width: 100%;
 }
