@@ -1,8 +1,8 @@
 const gridContainer = document.querySelector("#grid-container");
 const defaultGridSize = 16;
-const defaultColor = "#000000";
 let isCheckedRGB = false;
 let isDrawing = false;
+let isCheckedBrightness = false;
 
 const colorRGB = () => {
     let checkboxRGB = document.querySelector("#checkboxRGB");
@@ -11,16 +11,25 @@ const colorRGB = () => {
     });
 }
 
+// const colorBrightness = () => {
+//     let checkboxBrightness = document.querySelector("#checkboxBrightness");
+//     checkboxBrightness.addEventListener("change", function() {
+//         isCheckedBrightness = this.checked;
+//     })
+// }
+
 // Function for making grid layout
 const makeGrid = (gridSize) => {
+
+    // Function to reset grid
     const resetGrid = (parent) => {
         while(parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
     }
-
     resetGrid(gridContainer);
 
+    // Loop to make the grid
     for (let i = 0; i < gridSize; ++i) {
         let column = document.createElement("div");
         column.className = "column";
@@ -43,7 +52,6 @@ const hoverEffect = () => {
     };
 
     [...document.getElementsByClassName("cell")].forEach(cell => {
-        
         cell.addEventListener("mousedown", function() {
             isDrawing = true;
         });
@@ -58,7 +66,7 @@ const hoverEffect = () => {
                     const randomBlue = getRGBColor();
                     this.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
                 } else {
-                    this.style.backgroundColor = defaultColor;
+                    this.style.backgroundColor = `rgb(0, 0, 0`;
                 }
             }
         })
