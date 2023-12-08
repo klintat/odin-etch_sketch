@@ -36,9 +36,6 @@ body {
     border: 1px solid brown;
 }
 
-.hover-effect {
-    background-color: green
-}
 
 .btn-container {
     display: flex;

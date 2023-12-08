@@ -1,12 +1,24 @@
 const gridContainer = document.querySelector("#grid-container");
+const defaultGridSize = 16;
+const defaultColor = "#000000";
+let isCheckedRGB = false;
+let isDrawing = false;
+
+const colorRGB = () => {
+    let checkboxRGB = document.querySelector("#checkboxRGB");
+    checkboxRGB.addEventListener("change", function() {
+        isCheckedRGB = this.checked;
+    });
+}
 
 // Function for making grid layout
 const makeGrid = (gridSize) => {
-    function resetGrid(parent) {
+    const resetGrid = (parent) => {
         while(parent.firstChild) {
             parent.removeChild(parent.firstChild);
         }
     }
+
     resetGrid(gridContainer);
 
     for (let i = 0; i < gridSize; ++i) {
@@ -21,17 +33,37 @@ const makeGrid = (gridSize) => {
     }
 }
 
-makeGrid(16);
+makeGrid(defaultGridSize);
 
 // Function for the hover effect
 const hoverEffect = () => {
-    const checkboxRGB = document.querySelector("")
-    [...document.getElementsByClassName("cell")].forEach(cell => cell.addEventListener("mouseover", function(){
-        this.classList.add("hover-effect");
-    }))
-}
+    //Function to get random RGB color on hovering cell
+    const getRGBColor = () => {
+        return Math.floor(Math.random() * 256);
+    };
 
-hoverEffect();
+    [...document.getElementsByClassName("cell")].forEach(cell => {
+        
+        cell.addEventListener("mousedown", function() {
+            isDrawing = true;
+        });
+        cell.addEventListener("mouseup", function() {
+            isDrawing = false;
+        });
+        cell.addEventListener("mouseover", function() {
+            if(isDrawing) {
+                if (isCheckedRGB) {
+                    const randomRed = getRGBColor();
+                    const randomGreen = getRGBColor();
+                    const randomBlue = getRGBColor();
+                    this.style.backgroundColor = `rgb(${randomRed}, ${randomGreen}, ${randomBlue})`;
+                } else {
+                    this.style.backgroundColor = defaultColor;
+                }
+            }
+        })
+    });
+}
 
 // Function for reset and new layout grid
 const btnReset = document.querySelector("#btn-reset");
@@ -45,5 +77,7 @@ btnReset.addEventListener("click", function() {
     } else {
         makeGrid(userInput);
     }
-    hoverEffect();
 })
+
+colorRGB();
+hoverEffect();
