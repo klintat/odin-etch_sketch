@@ -11,13 +11,6 @@ const colorRGB = () => {
     });
 }
 
-// const colorBrightness = () => {
-//     let checkboxBrightness = document.querySelector("#checkboxBrightness");
-//     checkboxBrightness.addEventListener("change", function() {
-//         isCheckedBrightness = this.checked;
-//     })
-// }
-
 // Function for making grid layout
 const makeGrid = (gridSize) => {
 
